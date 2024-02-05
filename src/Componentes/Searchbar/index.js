@@ -12,11 +12,11 @@ const Searchbar = () => {
         console.log("pokemon: ", search)
     }
     return (
-        <div className="seachbar-container">
+        <div className="searchbar-container">
             <div className="searchbar">
                 <input placeholder="Busca de pokemon" onChange={onChangeHandler} />
             </div>
-            <div className="serachbar-btn">
+            <div className="searchbar-btn">
                 <button onClick={onButtonCLickHandler} >Buscar</button>
             </div>
         </div>
