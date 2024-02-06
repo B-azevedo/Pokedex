@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Pokemon.css'
+import FavoriteContext from "../../Context/favoritesContext";
 
 const Pokemon = (props) => {
+    const {favoritePokemons, updateFavoritePokemons} = useContext(FavoriteContext)
     const {pokemon} = props
     const onHeartClick = () => {
-        console.log("pode favoritar")
+        updateFavoritePokemons(pokemon.name)
     }
-    const heart = "❤"
+    const heart = favoritePokemons.includes(pokemon.name) ? "💟" : "❤️"
     return (
     <div className="pokemon-card">
         <div className="pokemon-image-card">

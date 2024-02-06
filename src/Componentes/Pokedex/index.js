@@ -1,24 +1,33 @@
 import React from "react";
 import './Pokedex.css'
-import {Pokemon, loading} from "../Pokemon";
-import Pages from "../Paginas/pages";
+import Pokemon from "../Pokemon";
+import Pages from "../Paginas";
 
 const Pokedex = (props) => {
-    const { pokemons, loading, page, totalPages } = props;
+    const { pokemons, loading, pages, setPages, totalPages } = props;
     const onLeftClickHandler = () => {
-        console.log("volta")
+        if(pages > 0) {
+            setPages(pages-1)
+        }
     }
     const onRightClickHandler = () => {
-        console.log("avança")
+        if(pages + 1 !== totalPages){
+            setPages(pages+1)
+        } 
     }
     return (
         <div>
             <div className="pokedex-header">
                 <h1>Pokedex</h1>
-                <Pages page={page+1} totalPages={totalPages} onLeftClick={onLeftClickHandler} onRightClick={onRightClickHandler}/>
+                <Pages 
+                page={pages+1} 
+                totalPages={totalPages} 
+                onLeftClick={onLeftClickHandler} 
+                onRightClick={onRightClickHandler}
+                />
             </div>
             {loading ? (
-                <div>Carregando, segura fera...</div>
+                <div>Carregando...</div>
             ) : (
                 <div className="pokedex-grid">
                     {pokemons && pokemons.map((pokemon, index) => {
